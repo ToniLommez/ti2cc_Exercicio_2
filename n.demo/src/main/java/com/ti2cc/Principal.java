@@ -12,11 +12,16 @@ public class Principal {
 	 * @param dao Banco a ser listado
 	 */
 	public static void adicionar(DAO dao) {
-		
 		// Recuperar dados para calcular o novo ID
 		Usuario[] usuarios = dao.getUsuarios();
-		int novoID =  usuarios[usuarios.length-1].getCodigo() + 1;
-        
+		int novoID = 0;
+		if (usuarios != null) {
+			novoID = usuarios[usuarios.length-1].getCodigo() + 1;
+		}
+		else {
+			novoID = 1;
+		}
+
 		// Gerar novo usuario
 		Usuario novoUsuario = new Usuario();
 		novoUsuario.setCodigo(novoID);
