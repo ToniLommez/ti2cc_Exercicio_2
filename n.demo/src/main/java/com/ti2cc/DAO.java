@@ -12,7 +12,7 @@ public class DAO {
 	public boolean conectar() {
 		String driverName = "org.postgresql.Driver";                    
 		String serverName = "localhost";
-		String mydatabase = "teste";
+		String mydatabase = "x";
 		int porta = 5432;
 		String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
 		String username = "ti2cc";
@@ -49,7 +49,7 @@ public class DAO {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			st.executeUpdate("INSERT INTO usuario (codigo, login, senha, sexo) "
+			st.executeUpdate("INSERT INTO x (codigo, login, senha, sexo) "
 					       + "VALUES ("+usuario.getCodigo()+ ", '" + usuario.getLogin() + "', '"  
 					       + usuario.getSenha() + "', '" + usuario.getSexo() + "');");
 			st.close();
@@ -64,7 +64,7 @@ public class DAO {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			String sql = "UPDATE usuario SET login = '" + usuario.getLogin() + "', senha = '"  
+			String sql = "UPDATE x SET login = '" + usuario.getLogin() + "', senha = '"  
 				       + usuario.getSenha() + "', sexo = '" + usuario.getSexo() + "'"
 					   + " WHERE codigo = " + usuario.getCodigo();
 			st.executeUpdate(sql);
@@ -80,7 +80,7 @@ public class DAO {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			st.executeUpdate("DELETE FROM usuario WHERE codigo = " + codigo);
+			st.executeUpdate("DELETE FROM x WHERE codigo = " + codigo);
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -95,7 +95,7 @@ public class DAO {
 		
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = st.executeQuery("SELECT * FROM usuario");		
+			ResultSet rs = st.executeQuery("SELECT * FROM x");		
 	         if(rs.next()){
 	             rs.last();
 	             usuarios = new Usuario[rs.getRow()];
